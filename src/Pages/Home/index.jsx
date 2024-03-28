@@ -1,9 +1,10 @@
 import React from 'react'
-
+import Layout from '../../components/Layout'
 function Home() {
   return (
-    <div className='bg-teal-200'>
-        Home</div>
+    <Layout >
+      HOME
+    </Layout>
   )
 }
 

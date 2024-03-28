@@ -1,8 +1,8 @@
 import React from 'react'
-
+import Layout from '../../components/Layout'
 function NotFound() {
   return (
-    <div className='bg-teal-200'>NotFound</div>
+    <Layout >MyOrders </Layout >
   )
 }
 

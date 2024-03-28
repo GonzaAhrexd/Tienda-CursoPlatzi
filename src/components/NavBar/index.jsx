@@ -1,14 +1,9 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
 function NavBar() {
-
-
-    const activeStyle = 'underline underline-offset-4'
-  
-
-  
+    const activeStyle = 'underline underline-offset-4'  
   return (
-    <nav className='flex justify-between items-center fixed z-10 w-full py-5 px-8 text-sm font-light bg-teal-300	'>
+    <nav className='flex justify-between items-center top-0 fixed z-10 w-full py-5 px-8 text-sm font-light bg-teal-300	'>
         <ul className='flex items-center gap-3'>
             <li className='font-semibold text-lg'>
             <NavLink to='/' > 

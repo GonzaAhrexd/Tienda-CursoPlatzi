@@ -1,8 +1,8 @@
 import React from 'react'
-
+import Layout from '../../components/Layout'
 function MyOrder() {
   return (
-    <div className='bg-teal-200'>MyOrder</div>
+    <Layout >MyOrder </Layout >
   )
 }
 
