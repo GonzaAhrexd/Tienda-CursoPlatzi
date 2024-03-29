@@ -12,16 +12,28 @@ export const ShoppingCartProvider = ({ children }) => {
 
     // Current product detail state
     const [ProductDetail, setProductDetail] = useState("")
-    
+
     // Cart products state
     const [cartProducts, setCartProducts] = useState([{}])
 
+    // Open and close cart component
+    const [isCartOpen, setIsCartOpen] = useState(false)
+    const openCart = () => {
+        setIsCartOpen(true)
+        setIsProductDetailOpen(false)
+    }
+    const closeCart = () => {
+        setIsCartOpen(false)
+    }
+
+
     const openProductDetail = () => {
-    setIsProductDetailOpen(true)
+        setIsProductDetailOpen(true)
+        setIsCartOpen(false)
     }
     const closeProductDetail = () => {
         setIsProductDetailOpen(false)
-        }
+    }
     console.log(count)
     console.log(isProductDetailOpen)
     return (
@@ -34,9 +46,12 @@ export const ShoppingCartProvider = ({ children }) => {
             setProductDetail,
             ProductDetail,
             cartProducts,
-            setCartProducts
+            setCartProducts,
+            isCartOpen,
+            openCart,
+            closeCart
         }}>
-        { children }
+            {children}
         </ShoppingCartContext.Provider>
-        )
+    )
 }
