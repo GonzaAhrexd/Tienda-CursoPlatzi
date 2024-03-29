@@ -13,7 +13,9 @@ export const ShoppingCartProvider = ({ children }) => {
     // Current product detail state
     const [ProductDetail, setProductDetail] = useState("")
     
-  
+    // Cart products state
+    const [cartProducts, setCartProducts] = useState([{}])
+
     const openProductDetail = () => {
     setIsProductDetailOpen(true)
     }

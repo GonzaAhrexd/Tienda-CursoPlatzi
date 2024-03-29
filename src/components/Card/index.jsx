@@ -9,7 +9,15 @@ function Card( data) {
      context.setProductDetail(data)
      context.openProductDetail()
      console.log(context.ProductDetail)
- }
+ }   
+
+
+     const addToCart = (data) => {
+          context.setCount(context.count + 1)
+          //Agregar un nuevo producto al carrito actual
+          context.setCartProducts([...context.cartProducts, data])
+          console.log(context.cartProducts)
+     }
   return (
  
 
@@ -25,7 +33,7 @@ function Card( data) {
 
        alt={data.data.title} />
        <PlusCircleIcon className="absolute top-0 right-0 flex justify-center font-bold items-center mr-1 mt-1 bg-white w-6 h-6 rounded-full p1"
-       onClick={() => context.setCount(context.count + 1)}> </PlusCircleIcon>
+       onClick={() => addToCart(data)}> </PlusCircleIcon>
        
        </figure>
        
