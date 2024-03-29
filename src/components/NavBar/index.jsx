@@ -2,6 +2,7 @@ import React from 'react'
 import {NavLink} from 'react-router-dom'
 import { useContext } from 'react'
 import { ShoppingCartContext } from '../../Context'
+import {ShoppingCartIcon} from '@heroicons/react/24/outline'
 function NavBar() {
   const context = useContext(ShoppingCartContext)
     const activeStyle = 'underline underline-offset-4'  
@@ -42,8 +43,8 @@ function NavBar() {
             <li>
             <NavLink to='/sign-in' className={({isActive}) => isActive ? activeStyle : undefined}>Sign In</NavLink>
             </li>
-            <li>
-                🛒 {context.count}
+            <li className='flex flex-row flex space-x-4 items-end'>
+                 <ShoppingCartIcon className='h-6 w-6 text-black-500'/> {context.count}
             </li>
 
 </ul>
