@@ -18,6 +18,24 @@ export const ShoppingCartProvider = ({ children }) => {
 
     // Open and close cart component
     const [isCartOpen, setIsCartOpen] = useState(false)
+
+    //Total price of the cart
+    const [total, setTotal] = useState(0)
+
+    const calculateTotal = () => {
+        let total = 0;
+        if(!cartProducts.length){
+            setTotal(0)
+            return 0;
+        }else{
+            cartProducts.map(product => {
+                total = total + (product.price * product.quantity)
+            })
+            setTotal(total)
+            }
+        }
+
+    }
     const openCart = () => {
         setIsCartOpen(true)
         setIsProductDetailOpen(false)
@@ -25,7 +43,6 @@ export const ShoppingCartProvider = ({ children }) => {
     const closeCart = () => {
         setIsCartOpen(false)
     }
-
 
     const openProductDetail = () => {
         setIsProductDetailOpen(true)
@@ -48,9 +65,10 @@ export const ShoppingCartProvider = ({ children }) => {
             setCartProducts,
             isCartOpen,
             openCart,
-            closeCart
+            closeCart,
+            total,
+            calculateTotal
         }}>
             {children}
         </ShoppingCartContext.Provider>
     )
-}

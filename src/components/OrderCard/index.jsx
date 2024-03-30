@@ -1,10 +1,38 @@
+//  @ts-check
 import React from 'react'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import { useState } from 'react'
-function OrderCard(props) {
-    const { id, title, imageURL, price, quantity } = props
+import { useState, useContext } from 'react'
+import { PlusIcon, MinusIcon, TrashIcon } from '@heroicons/react/24/outline'
+import { ShoppingCartContext } from '../../Context'
 
-    const [isHovered, setIsHovered] = useState(false)
+function OrderCard(props) {
+    
+    const context = useContext(ShoppingCartContext)
+    const { id, title, imageURL, price } = props
+    let { quantity } = props
+
+    const incrementQuantity = (event, id) => {
+        event.stopPropagation()
+        context.setCount(context.count + 1)
+      
+      context.cartProducts.find(product => product.id === id).quantity++
+    }
+
+    const decrementQuantity = (event, id, quantity) => {
+        if(quantity <= 1){
+            deleteItem(id)
+        }
+
+        event.stopPropagation()
+        context.setCount(context.count - 1)
+        context.cartProducts.find(product => product.id === id).quantity--
+    }
+
+    const deleteItem = (id) => {
+        const newCart = context.cartProducts.filter(product => product.id !== id)
+        context.setCartProducts(newCart)
+    }
+
     return (
 
         <div className="flex justify-between mb-2">
@@ -13,35 +41,24 @@ function OrderCard(props) {
                     <img className='w-full h-full rounded-lg object-cover' src={imageURL} alt={title} />
                 </figure>
 
-                <div className='flex flex-col justify-center gap-2' onMouseMove={() => { setIsHovered(true) }} onMouseOut={() => { setIsHovered(false) }}>
-
-                    {isHovered ? (
-                        <>
-                            <p className='text-base font-light'>{quantity}x ${price} </p>
-                            <p className='text-base font-light text-red-400'>Total: ${price * quantity} </p>
-                        </>
-                    ) : (
-                        <>
+                <div className='flex flex-col justify-center gap-2' >
                             <p className='font-light text-2xl'>${price * quantity} </p>
                             <p className='text-sm font-light'> {title} </p>
-                        </>
-                    )}
-
 
                 </div>
                         
-                        <div className='flex flex-row'>
-                            <button>+</button>
-                            <input className='h-5 w-6 border-2 border-solid border-zinc-700	' type="number" name="" id="" value={quantity} />
-                            <button>-</button>
+                        <div className='flex flex-row text-center justify-center items-center'>
+                            <PlusIcon className='h-5 cursor-pointer' onClick={(event) => { (incrementQuantity(event, id))}} ></PlusIcon>
+                            <span className='bg-teal-200 w-6 rounded-md m-2'> {quantity} </span>
+                            <MinusIcon className='h-5 cursor-pointer' onClick={(event) => { (decrementQuantity(event, id, quantity))}} ></MinusIcon>
                         </div>
 
             </div>
 
-            <XMarkIcon className='h-6 w-6 text-black cursor-pointer'
-                onClick={() => { console.log("clicked") }} >
+            <TrashIcon className='h-6 w-6 text-black cursor-pointer'
+                onClick={() => { deleteItem(id) }} >
 
-            </XMarkIcon>
+            </TrashIcon>
         </div>
     )
 }

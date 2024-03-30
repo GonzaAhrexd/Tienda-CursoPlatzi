@@ -19,10 +19,10 @@ function CheckoutSideMenu() {
         <div className='px-6 overflow-y-scroll'>
 
        {context.cartProducts.map((product) => { 
-         console.log(product.title)
         return( 
           <OrderCard 
           key = {product.id}
+          id = {product.id}
           title={product.title}
           imageURL={product.image}
           price={product.price}

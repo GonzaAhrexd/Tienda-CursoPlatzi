@@ -30,17 +30,16 @@ function Card( data) {
                     this.title = title;
                     this.price = price;
                     this.image = image;
-                    this.quantity = 1;
+                    this.quantity = quantity;
                 }
           }
           const productToAdd = new Product(id, title, price, images, 1)
-          console.log(productToAdd)
 
           if(!repeatedProduct(productToAdd)) {
                
               context.setCartProducts([...context.cartProducts, productToAdd])
           }else{
-            context.cartProducts.find(product => product.id === productToAdd.id).quantity++
+           context.cartProducts.find(product => product.id === productToAdd.id).quantity++
           }
           
           //Agregar un nuevo producto al carrito actual
