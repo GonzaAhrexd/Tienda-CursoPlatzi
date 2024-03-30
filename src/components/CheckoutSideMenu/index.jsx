@@ -4,7 +4,7 @@ import { XMarkIcon } from '@heroicons/react/24/outline'
 import { useContext } from 'react'
 import { ShoppingCartContext } from '../../Context'
 import  OrderCard  from '../OrderCard'
-
+import  TotalCart  from '../TotalCart'
 function CheckoutSideMenu() {
   const context = useContext(ShoppingCartContext)
   
@@ -32,6 +32,8 @@ function CheckoutSideMenu() {
           )})}
 
           </div>
+
+          <TotalCart/>
 
     </aside>
   

@@ -38,6 +38,7 @@ function Card( data) {
           if(!repeatedProduct(productToAdd)) {
                
               context.setCartProducts([...context.cartProducts, productToAdd])
+   
           }else{
            context.cartProducts.find(product => product.id === productToAdd.id).quantity++
           }

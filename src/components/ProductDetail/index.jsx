@@ -26,9 +26,11 @@ function ProductDetail() {
          <span className='text-4xl'>${context.ProductDetail.data?.price}</span>
         
         </div>
+       
         </div>
       
-   
+       
+
 
     </aside>
   

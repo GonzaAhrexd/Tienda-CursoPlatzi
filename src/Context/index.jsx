@@ -1,9 +1,9 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ShoppingCartContext = createContext();
 
 export const ShoppingCartProvider = ({ children }) => {
-
+    
     // Shopping cart counter state
     const [count, setCount] = useState(0)
 
@@ -33,7 +33,6 @@ export const ShoppingCartProvider = ({ children }) => {
             })
             setTotal(total)
             }
-        }
 
     }
     const openCart = () => {
@@ -51,7 +50,9 @@ export const ShoppingCartProvider = ({ children }) => {
     const closeProductDetail = () => {
         setIsProductDetailOpen(false)
     }
-    
+    useEffect(() => {
+        calculateTotal();
+       }, [cartProducts, count]); 
     return (
         <ShoppingCartContext.Provider value={{
             count,
@@ -72,3 +73,4 @@ export const ShoppingCartProvider = ({ children }) => {
             {children}
         </ShoppingCartContext.Provider>
     )
+}
