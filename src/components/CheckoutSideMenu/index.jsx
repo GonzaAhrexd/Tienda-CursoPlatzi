@@ -32,9 +32,11 @@ function CheckoutSideMenu() {
           )})}
 
           </div>
-
+          <div>
+            
           <TotalCart/>
-
+            
+          </div>
     </aside>
   
   )

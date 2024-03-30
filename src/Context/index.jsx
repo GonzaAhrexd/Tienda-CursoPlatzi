@@ -16,6 +16,10 @@ export const ShoppingCartProvider = ({ children }) => {
     // Cart products state
     const [cartProducts, setCartProducts] = useState([])
 
+     // Order products state
+     const [order, setOrder] = useState([])
+
+
     // Open and close cart component
     const [isCartOpen, setIsCartOpen] = useState(false)
 
@@ -68,7 +72,9 @@ export const ShoppingCartProvider = ({ children }) => {
             openCart,
             closeCart,
             total,
-            calculateTotal
+            calculateTotal,
+            order,
+            setOrder
         }}>
             {children}
         </ShoppingCartContext.Provider>
